@@ -4,7 +4,7 @@ import spacy
 st.markdown("## Igbo NER Demo")
 st.markdown("##### This is the demo app for Igbo Named Entity Recognition")
 
-input_test = st.text_area( "Text to analyze",
+input_text = st.text_area( "Text to analyze",
   "O mere Steeti Abịa nwee gọvanọ dịkarịsịrị njọ na republik nke anọ ya bụ Theodore Orji."
   "Ihe nyere ọṅụ banyere okwu a bụ na Orji Uzor Kalu kwuru na facebook bụ na ọ banyere APC n'ihi nkwa nke Buhari kwere ya na ndị ọrụ ngo nke Ndịdaọwụwa Anyanwụ South-East agaalaghị nihu ọrụ tupu ọnwa Nọvemba."
   "Abanyere m APC nihi na Buhari emezuola nkwa nke o kwere m ma nwekwaa olileanya na ọ gaeme karịa."
@@ -17,4 +17,4 @@ input_test = st.text_area( "Text to analyze",
 ,
 )
 
-st.write(f"You wrote {len(txt)} characters.")
+st.write(f"You wrote {len(input_text)} characters.")
