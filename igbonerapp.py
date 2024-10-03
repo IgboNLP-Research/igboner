@@ -1,5 +1,6 @@
 import streamlit as st
 import spacy
+from spacy import displacy
 
 # Define a function to read entities from files
 def read_entities_from_file(file_path):
@@ -44,4 +45,13 @@ input_text = st.text_area( "Text to analyze",
 ,
 )
 
-st.write(f"You wrote {len(input_text)} characters.")
+doc = nlp(input_text)
+
+# Take the text from the input field and render the entity html.
+# Note that style="ent" indicates entities.
+ent_html = displacy.render(doc, style="ent", jupyter=False)
+
+# Display the entity visualization in the browser:
+st.markdown(ent_html, unsafe_allow_html=True)
+
+# st.write(f"You wrote {len(input_text)} characters.")
