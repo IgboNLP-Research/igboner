@@ -1,6 +1,32 @@
 import streamlit as st
 import spacy
 
+# Define a function to read entities from files
+def read_entities_from_file(file_path):
+    with open(file_path, 'r', encoding='utf8') as file:
+        entities = [line.strip() for line in file if line.strip()]
+    return entities
+
+# Read entities from the files
+locs = read_entities_from_file('IgboNER_loc.txt')
+orgs = read_entities_from_file('IgboNER_org.txt')
+pers = read_entities_from_file('IgboNER_per.txt')
+dates = read_entities_from_file('IgboNER_date.txt')
+
+# Define a function to create entity patterns for a given list of entities and label
+def create_patterns(entities, label):
+    patterns = [{'label': label, 'pattern': entity} for entity in entities]
+    return patterns
+
+# Create entity patterns based on LOC, DATE, ORG, and PER tokens
+loc_patterns = create_patterns(locs, 'LOC')
+date_patterns = create_patterns(dates, 'DATE')
+org_patterns = create_patterns(orgs, 'ORG')
+per_patterns = create_patterns(pers, 'PER')
+
+# Combine all the patterns into one list
+all_patterns = loc_patterns + date_patterns + org_patterns + per_patterns
+
 st.markdown("## Igbo NER Demo")
 st.markdown("##### This is the demo app for Igbo Named Entity Recognition")
 
