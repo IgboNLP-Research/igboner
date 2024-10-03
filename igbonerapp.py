@@ -26,7 +26,7 @@ patterns += [{'label':'ORG', 'pattern':orgs} for orgs in set(orgs)]
 patterns += [{'label':'PER', 'pattern':pers} for pers in set(pers)]
 
 # Add the patterns to the entity ruler
-ruler.add_patterns(all_patterns)
+ruler.add_patterns(patterns)
 
 st.markdown("## Igbo NER Demo")
 st.markdown("##### This is the demo app for Igbo Named Entity Recognition")
