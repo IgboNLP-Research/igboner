@@ -13,19 +13,20 @@ orgs = read_entities_from_file('IgboNER_org.txt')
 pers = read_entities_from_file('IgboNER_per.txt')
 dates = read_entities_from_file('IgboNER_date.txt')
 
-# Define a function to create entity patterns for a given list of entities and label
-def create_patterns(entities, label):
-    patterns = [{'label': label, 'pattern': entity} for entity in entities]
-    return patterns
+# Load the English model and disable NER and parser
+nlp = spacy.load("en_core_web_sm", disable=["ner", "parser"]) # we will change the English model later...
 
-# Create entity patterns based on LOC, DATE, ORG, and PER tokens
-loc_patterns = create_patterns(locs, 'LOC')
-date_patterns = create_patterns(dates, 'DATE')
-org_patterns = create_patterns(orgs, 'ORG')
-per_patterns = create_patterns(pers, 'PER')
+# add spacy's EntityRuler
+ruler = nlp.add_pipe('entity_ruler', before='ner')
 
-# Combine all the patterns into one list
-all_patterns = loc_patterns + date_patterns + org_patterns + per_patterns
+# Define entity patterns based on LOC, DATE, ORG, and PER tokens
+patterns  = [{'label':'LOC', 'pattern':loc} for loc in set(locs)]
+patterns += [{'label':'DATE', 'pattern':date} for date in set(dates)]
+patterns += [{'label':'ORG', 'pattern':orgs} for orgs in set(orgs)]
+patterns += [{'label':'PER', 'pattern':pers} for pers in set(pers)]
+
+# Add the patterns to the entity ruler
+ruler.add_patterns(all_patterns)
 
 st.markdown("## Igbo NER Demo")
 st.markdown("##### This is the demo app for Igbo Named Entity Recognition")
