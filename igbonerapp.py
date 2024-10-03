@@ -1,2 +1,5 @@
 import streamlit as st
-st.markdown("## Testing the Igbo NER App")
+import spacy
+
+st.markdown("## Igbo NER Demo")
+st.markdown("##### This is the demo app for Igbo Named Entity Recognition")
