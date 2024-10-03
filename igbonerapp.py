@@ -42,7 +42,7 @@ input_text = st.text_area( "Text to analyze",
   "Ugbua Kalu na-eje mkpọrọ ndị dịka Tinubu, Patience Jonathan, Olisa Metu, Femi Fanikayode, ga-enye mkpesa etu ha siri jeere ọhanaeze ozi."
   "Ka anyị na-achịkọba ihe nkpata ndị a niile, anyị na-atụ anya ife na mmalite afọ 2020 ma nyefee n'afọ 2021."
   "Satọde abalị iri abụọ na otu nke ọnwa Mee afọ 2016, 'The Great Hall, nke Kensington dị na mba London, chịkọbara emume inye onyinye nke bukarịsịrị n'ibu nye ụmụ nwaanyị nke mba Europe na ndị Commonwealth."
-,
+, height=150,
 )
 
 doc = nlp(input_text)
